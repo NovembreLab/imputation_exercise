@@ -1,0 +1,10 @@
+name: imputex
+channels:
+- bioconda
+- r
+- defaults
+dependencies:
+- impute2=2.3.2=0
+- plink2=1.90b3.35=0
+prefix: /Users/Biddanda/miniconda3/envs/imputex
+
