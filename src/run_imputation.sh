@@ -7,8 +7,8 @@ EXAMPLEDIR=../data/Example
 
 #2. Setting the Appropriate Filenames
 MAP=${EXAMPLEDIR}/example.chr22.map
-HAPS=${EXAMPLEDIR}/example.chr22.1kg.haps
-LEGEND=${EXAMPLEDIR}/example.chr22.1kg.legend
+HAPS=${EXAMPLEDIR}/example.chr22.1kG.haps
+LEGEND=${EXAMPLEDIR}/example.chr22.1kG.legend
 
 GENS=${EXAMPLEDIR}/example.chr22.study.gens
 STRAND=${EXAMPLEDIR}/example.chr22.study.strand
@@ -16,7 +16,6 @@ STRAND=${EXAMPLEDIR}/example.chr22.study.strand
 NE=20000
 
 OUT=${EXAMPLEDIR}/example.chr22.one.phased.impute2
-
 
 
 #3. Running IMPUTE2
