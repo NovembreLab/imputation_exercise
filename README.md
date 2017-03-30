@@ -3,9 +3,7 @@ IMPUTE2_Exercise
 
 ## Introduction
 
-This is an introduction to imputation by using impute2
-
-
+This is an introduction to imputation and imputation-based association studies using IMPUTE2. Prerequisites that are assumed are some familiarity with the unix shell. 
 
 ## Setup
 
@@ -38,6 +36,14 @@ And finally:
 ```
 source activate imputex
 ```
+
+To get out of the setup environment, type:
+
+```
+source deactivate
+```
+
+
 
 ## Acknowledgements
 
