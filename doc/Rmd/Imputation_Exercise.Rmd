@@ -2,6 +2,31 @@ Lab 1: Genotype Imputation and Haplotype Phasing with IMPUTE2
 ============================================================ 
 *Created by Max Winston; modified by Ittai Eres and Arjun Biddanda*
 
+Section 1: Brief Recap on Genome-Wide Association Studies (GWAS)
+----------------------------------------------------------------
+
+GWAS is a fundamental tool for association between genotypes and phenotypes. 
+Phenotypes come in two general types: case-control and quantitative. The
+general premise is to perform independent linear regression or a $\chi^2$ contingency table
+at each variant and get an output of significance (p-values). For a more thorough introduction
+on the statistical methodology behind gwas please see [here]()
+
+The summary of these results is normally shown by a "Manhattan" plot, which plots the location of
+the genetic variant against the $-log_{10}(p-value)$ of the single-variant association. GWAS 
+has been instrumental in determining the genetic basis of human diseases as well as traits in other
+organisms. 
+
+*Manhattan plots for 7 diseases in the Wellcome Trust Case-Control Consortium*:
+
+![](figs/wtccc.jpg)
+
+Another side note is that we are performing many independent tests (typically millions), of which 5% could be deemed 
+significant even if they are not associated variants and follow the null hypothesis. To combat this inflation in potential 
+false-positives, one technique that is used is Bonferroni correction. The premise behind Bonferroni correction is that we divide our significance threshold (e.g. $\alpha = 0.05$) by the number of independent statistical tests that we have performed ($n$). Alternatively, one could also mutliply the p-values that they obtain from GWAS by the number of tests and use the same $\alpha = 0.05$ significance cutoff. 
+
+
+Section 2: Introduction to Imputation
+--------------------------------------
 Genotype imputation relies on statistical inference and known haplotypes in a
 population to estimate unobserved genotypes. Often, particularly in epidemiology
 and quantitative genetics, a researcher may want to identify a specific location
@@ -32,7 +57,7 @@ end of the lab you should be able to:
 
 ![](figs/impute2_scheme.png)
 
-Section 1: Basics of IMPUTE2 
+Section 3: Basics of IMPUTE2 
 -------------------------------
 
 <!-- TODO : Unclear if we need this section here awk and paste are the only ones.. -->
@@ -220,7 +245,7 @@ Section 2: Simulating a Case-Control Scenario with Imputation
 In this section we will use the skills we have learned in the first section to
 simulate a scenario in which you have localized a region through previous work
 on the 22nd chromosome that is associated with Disease XXX. You will need to use
-both PLINK, GTOOL, IMPUTE2, and BASH commands to work through this scenario, in
+PLINK, IMPUTE2, and BASH commands to work through this scenario, in
 which you will run an association, identify the SNP on your array, convert data
 to IMPUTE2 format, and impute unobserved SNPs for another association in an
 attempt to get a more precise estimate of the associated SNP.
@@ -304,8 +329,16 @@ using the posterior probabilites of each imputed genotype (using for example the
 SNPTEST software).
 
 
+Other Imputation Resources
+---------------------------
+ - [EAGLE](https://www.hsph.harvard.edu/po-ru-loh/software/)
+ - [Michigan Imputation Server](https://imputationserver.sph.umich.edu/index.html)
+
 References 
 ---------------------------- 
 
 **B. N. Howie, P. Donnelly, and J. Marchini (2009).** 
 A flexible and accurate genotype imputation method for the next generation of genome-wide association studies. *PLoS Genetics* 5(6): e1000529
+
+** The Wellcome Trust Case-Control Consortium (2007).**
+Genome-wide association study of 14,000 cases of seven common diseases and 3,000 shared controls. *Nature*
