@@ -1,4 +1,4 @@
-IMPUTE2_Exercise
+imputation_exercise
 ---------------
 
 ## Introduction
@@ -12,8 +12,8 @@ In order to setup the working environment for this workshop, we will be using gi
 To get started, run:
 
 ```
-git clone https://github.com/NovembreLab/IMPUTE2_Exercise
-cd IMPUTE2_Exercise
+git clone https://github.com/NovembreLab/imputation_exercise
+cd imputation_exercise
 ``` 
 
 Then we install `miniconda`, which will allow us to maintain all of the dependencies in our working environment.
