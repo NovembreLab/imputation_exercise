@@ -162,8 +162,7 @@ For getting the hang of running IMPUTE2, we will be imputing the area on the
 22nd chromosome between the SNPs sequenced in the example files
 *"example.chr.study"*. These files specify the necessary information for our
 **inference panel**. Likewise, we have a **reference panel** in this same region
-specified in the files starting with *"example.chr.1kg"*. **Save the following
-command into a new file named "execute_impute.sh"**:
+specified in the files starting with *"example.chr22.1kG"*:
 
 ```{r, eval=FALSE}
 
@@ -340,5 +339,5 @@ References
 **B. N. Howie, P. Donnelly, and J. Marchini (2009).** 
 A flexible and accurate genotype imputation method for the next generation of genome-wide association studies. *PLoS Genetics* 5(6): e1000529
 
-** The Wellcome Trust Case-Control Consortium (2007).**
+**The Wellcome Trust Case-Control Consortium (2007).**
 Genome-wide association study of 14,000 cases of seven common diseases and 3,000 shared controls. *Nature*

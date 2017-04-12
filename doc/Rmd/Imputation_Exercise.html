@@ -265,7 +265,7 @@ $(document).ready(function () {
 </div>
 <div id="running-the-imputation" class="section level3">
 <h3><em>1.5: Running the imputation</em></h3>
-<p>For getting the hang of running IMPUTE2, we will be imputing the area on the 22nd chromosome between the SNPs sequenced in the example files <em>“example.chr.study”</em>. These files specify the necessary information for our <strong>inference panel</strong>. Likewise, we have a <strong>reference panel</strong> in this same region specified in the files starting with <em>“example.chr.1kg”</em>. <strong>Save the following command into a new file named “execute_impute.sh”</strong>:</p>
+<p>For getting the hang of running IMPUTE2, we will be imputing the area on the 22nd chromosome between the SNPs sequenced in the example files <em>“example.chr.study”</em>. These files specify the necessary information for our <strong>inference panel</strong>. Likewise, we have a <strong>reference panel</strong> in this same region specified in the files starting with <em>“example.chr22.1kG”</em>:</p>
 <pre class="r"><code>impute2 -m data/Example/example.chr22.map -h data/Example/example.chr22.1kG.haps -l data/Example/example.chr22.1kG.legend -g data/Example/example.chr22.study.gens -strand_g data/Example/example.chr22.study.strand -int 20.3e6 0.6e6 -Ne 20000 -o data/Example/example.chr22.one.phased.impute2</code></pre>
 <p>You can either type out this command all on one line or you can save it to a script. Note that the command above implicitly assumes that you are in the main directory of the project (<em>IMPUTE2_Exercise</em>), and where you can see the <em>data/</em> directory listed out. This should create five files in the specified directory (<em>data/Example/</em>), all of which should start with <em>“example.chr22.one.phased.impute2”</em>.</p>
 <p>The file with the actual imputed genotypes in GENS format should be the file <em>just</em> called <em>“example.chr22.one.phased.impute2”</em>. Other supplementary output files have underscores and then IDs: <strong>“warning”</strong> gives any errors during the imputation process, <strong>“summary”</strong> is just a log file, <strong>“info”</strong> gives a variety of information for each SNP as demonstrated in the header, and <strong>“info by sample”</strong> gives information by individuals instead of by SNP.</p>
@@ -346,7 +346,7 @@ rm tmp.gens</code></pre>
 <div id="references" class="section level2">
 <h2>References</h2>
 <p><strong>B. N. Howie, P. Donnelly, and J. Marchini (2009).</strong> A flexible and accurate genotype imputation method for the next generation of genome-wide association studies. <em>PLoS Genetics</em> 5(6): e1000529</p>
-<p>** The Wellcome Trust Case-Control Consortium (2007).** Genome-wide association study of 14,000 cases of seven common diseases and 3,000 shared controls. <em>Nature</em></p>
+<p><strong>The Wellcome Trust Case-Control Consortium (2007).</strong> Genome-wide association study of 14,000 cases of seven common diseases and 3,000 shared controls. <em>Nature</em></p>
 </div>
 </div>
 
