@@ -1,28 +1,29 @@
-Lab 1: Genotype Imputation and Haplotype Phasing with IMPUTE2 
-============================================================ 
+Lab 1: Genotype Imputation and Haplotype Phasing with IMPUTE2
+============================================================
 *Created by Max Winston; modified by Ittai Eres and Arjun Biddanda*
 
 Section 1: Brief Recap on Genome-Wide Association Studies (GWAS)
 ----------------------------------------------------------------
 
-GWAS is a fundamental tool for association between genotypes and phenotypes. 
+GWAS is a fundamental tool for association between genotypes and phenotypes.
 Phenotypes come in two general types: case-control and quantitative. The
 general premise is to perform independent linear regression or a $\chi^2$ contingency table
-at each variant and get an output of significance (p-values). For a more thorough introduction
-on the statistical methodology behind gwas please see [here]()
+at each variant and get an output of significance (p-values). For more of an introduction to 
+GWAS methodology, see [here](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002822)
+
 
 The summary of these results is normally shown by a "Manhattan" plot, which plots the location of
-the genetic variant against the $-log_{10}(p-value)$ of the single-variant association. GWAS 
+the genetic variant against the $-log_{10}(p-value)$ of the single-variant association. GWAS
 has been instrumental in determining the genetic basis of human diseases as well as traits in other
-organisms. 
+organisms.
 
 *Manhattan plots for 7 diseases in the Wellcome Trust Case-Control Consortium*:
 
 ![](figs/wtccc.jpg)
 
-Another side note is that we are performing many independent tests (typically millions), of which 5% could be deemed 
-significant even if they are not associated variants and follow the null hypothesis. To combat this inflation in potential 
-false-positives, one technique that is used is Bonferroni correction. The premise behind Bonferroni correction is that we divide our significance threshold (e.g. $\alpha = 0.05$) by the number of independent statistical tests that we have performed ($n$). Alternatively, one could also mutliply the p-values that they obtain from GWAS by the number of tests and use the same $\alpha = 0.05$ significance cutoff. 
+Another side note is that we are performing many independent tests (typically millions), of which 5% could be deemed
+significant even if they are not associated variants and follow the null hypothesis. To combat this inflation in potential
+false-positives, one technique that is used is Bonferroni correction. The premise behind Bonferroni correction is that we divide our significance threshold (e.g. $\alpha = 0.05$) by the number of independent statistical tests that we have performed ($n$). Alternatively, one could also mutliply the p-values that they obtain from GWAS by the number of tests and use the same $\alpha = 0.05$ significance cutoff.
 
 
 Section 2: Introduction to Imputation
@@ -47,40 +48,40 @@ estimation of haplotypes from genotype data. Both of these steps can be
 accomplished from within IMPUTE2, and will be the focus of today's lab. By the
 end of the lab you should be able to:
 
-- **Understand basic workflow and syntax of IMPUTE2** 
-- **Execute basic imputation in IMPUTE2** 
-- **Navigate basic commands for file conversion using PLINK2** 
-- **Understand key assumptions of imputation** 
+- **Understand basic workflow and syntax of IMPUTE2**
+- **Execute basic imputation in IMPUTE2**
+- **Navigate basic commands for file conversion using PLINK2**
+- **Understand key assumptions of imputation**
 - **Utilize IMPUTE2 and PLINK to search for putative associations in imputed SNPs**
 
 *Basic schematic of SNP imputation (Howie & Marchini, 2009):*
 
 ![](figs/impute2_scheme.png)
 
-Section 3: Basics of IMPUTE2 
+Section 3: Basics of IMPUTE2
 -------------------------------
 
 <!-- TODO : Unclear if we need this section here awk and paste are the only ones.. -->
 ### *1.1: BASH commands useful for this lab*
 
-Command      Description 
+Command      Description
 -------      -----------
-**paste**    Merges lines of files together. 
-**wc**       Word, line, character, and byte count. 
-**mkdir**    Make directory. 
-**head**     Output first part of files. 
+**paste**    Merges lines of files together.
+**wc**       Word, line, character, and byte count.
+**mkdir**    Make directory.
+**head**     Output first part of files.
 **awk**      Sets of commands useful for interacting with data tables
 
 ### *1.2: Standard IMPUTE2 arguments*
 
 Argument       Input Type      Description    
 --------       ----------      -----------
-**-g**         .gens           File containing study genotypes needing imputation or phasing. 
-**-m**         .map            Fine-scale recombination map for the region to be analyzed. 
-**-int**       [*interval*]    Genomic interval to use for imputation inference. 
-**-h**         .haps           File of known haplotypes, with one row per SNP and one column per haplotype (alleles must be coded 0 or 1) 
-**-l**         .legend         Legend file(s) with information about the SNPs in the haplotypes file. 
-**-strand_g**  .strand         File containing strand orientation of the inference set. 
+**-g**         .gens           File containing study genotypes needing imputation or phasing.
+**-m**         .map            Fine-scale recombination map for the region to be analyzed.
+**-int**       [*interval*]    Genomic interval to use for imputation inference.
+**-h**         .haps           File of known haplotypes, with one row per SNP and one column per haplotype (alleles must be coded 0 or 1)
+**-l**         .legend         Legend file(s) with information about the SNPs in the haplotypes file.
+**-strand_g**  .strand         File containing strand orientation of the inference set.
 **-Ne**        [*pop size*]    Parameter controlling effective population size.
 
 ### *1.3: File formatting for IMPUTE2*
@@ -188,10 +189,10 @@ the *src/* directory that will enable you to generate the required output
 without any trouble. To run this script run the following commands from the main
 directory:
 
-```{r, eval=FALSE} 
-cd src/ 
-bash run_imputation.sh 
-cd .. 
+```{r, eval=FALSE}
+cd src/
+bash run_imputation.sh
+cd ..
 ```
 
 
@@ -204,7 +205,7 @@ does it say and how would you interpret this?
 
 ### *1.6: Converting IMPUTE2 files to PLINK format*
 
-The newest version of PLINK (v1.9.0) is an incredibly versatile tool for the analysis of genetic data. One of the best features is that it allows a user to convert between many different file formats, something we would like to do in order to run an association analysis on our newly imputed data.The program is well documented, and it is recommended that you visit the documentation on the website for any purposes outside this lab (https://www.cog-genomics.org/plink2). 
+The newest version of PLINK (v1.9.0) is an incredibly versatile tool for the analysis of genetic data. One of the best features is that it allows a user to convert between many different file formats, something we would like to do in order to run an association analysis on our newly imputed data.The program is well documented, and it is recommended that you visit the documentation on the website for any purposes outside this lab (https://www.cog-genomics.org/plink2).
 
 
 #### *1.6.2: Basic PLINK2 File Conversion*
@@ -232,13 +233,13 @@ rm tmp.gens
 
 
 <!-- WORDING here... -->
-One important parameter is the **"--hard-call-threshold"** argument. This tells PLINK the likelihood cut-off for a genotype at any given SNP. For example, in our command, any likelihood below 0.9 at a given SNP will produce a "missing genotype" for PLINK. If you wanted to be extra certain you could provide a value of 0.05 or 0.01 for this parameter. 
+One important parameter is the **"--hard-call-threshold"** argument. This tells PLINK the likelihood cut-off for a genotype at any given SNP. For example, in our command, any likelihood below 0.9 at a given SNP will produce a "missing genotype" for PLINK. If you wanted to be extra certain you could provide a value of 0.05 or 0.01 for this parameter.
 
 *Problem 5* Recalling your knowledge of the structure of PED files, what do you
 notice about both the phenotype and gender information in the file we just
 converted ("real_small.ped")?
 
-Section 2: Simulating a Case-Control Scenario with Imputation 
+Section 2: Simulating a Case-Control Scenario with Imputation
 -------------------------------------------------------------
 
 In this section we will use the skills we have learned in the first section to
@@ -294,13 +295,13 @@ Imputation for this set of 33 markers was completed in Section 1.5. The file you
 produced should be called **"example.chr22.one.phased.impute2"**. Let's take
 this GENS file and convert it to PED format.
 
-*Problem 10* 
-Using the commands provided in section 1.6.2 above as a guide, write a second command to 
-convert the file *data/Example/example.chr22.one.phased.impute2* to PED format and name this output *real_small_imputed* and place the output in the *data/plink_files/* directory. 
+*Problem 10*
+Using the commands provided in section 1.6.2 above as a guide, write a second command to
+convert the file *data/Example/example.chr22.one.phased.impute2* to PED format and name this output *real_small_imputed* and place the output in the *data/plink_files/* directory.
 
 Finally, we need to modify this PED file to insert our phenotype into it.
 
-*Problem 11* 
+*Problem 11*
 Using the steps of section 2.1.1, create a phenotype file for the *real_small_imputed* dataset. Note that you will have to use the awk command, but make sure that the output file is named properly (the name should be *real_small_imputed.pheno*)
 
 ### *2.4: Running a GWAS with Imputed SNPs*
@@ -333,10 +334,10 @@ Other Imputation Resources
  - [EAGLE](https://www.hsph.harvard.edu/po-ru-loh/software/)
  - [Michigan Imputation Server](https://imputationserver.sph.umich.edu/index.html)
 
-References 
----------------------------- 
+References
+----------------------------
 
-**B. N. Howie, P. Donnelly, and J. Marchini (2009).** 
+**B. N. Howie, P. Donnelly, and J. Marchini (2009).**
 A flexible and accurate genotype imputation method for the next generation of genome-wide association studies. *PLoS Genetics* 5(6): e1000529
 
 **The Wellcome Trust Case-Control Consortium (2007).**
