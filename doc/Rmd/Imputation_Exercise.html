@@ -311,28 +311,28 @@ rm tmp.gens</code></pre>
 <p>In order to run a basic association in PLINK, we will use the <em>–assoc</em> flag. If we call the following from the main directory we will be able to run a basic case-control analysis on the original genotyping data (using our new phenotype file!)</p>
 <pre class="r"><code>plink2 --file data/plink_files/real_small --pheno data/plink_files/real_small.pheno --allow-no-sex --assoc --out results/gwas_array</code></pre>
 <p>The output files from this command should be in the <em>results</em> directory, and should all have the prefix of <em>gwas_array</em>.</p>
-<p><em>Problem 8</em> According to this analysis, what is the most highly associated SNP? What is the unadjusted p-value? Considering what you know about how we found this SNP (see above), what do you think the Bonferroni-correction should be?</p>
+<p><em>Problem 6</em> According to this analysis, what is the most highly associated SNP? What is the unadjusted p-value? Considering what you know about how we found this SNP (see above), what do you think the Bonferroni-correction should be?</p>
 <div id="manhattan-plot-of-initial-gwas" class="section level3">
 <h3><em>2.2: Manhattan plot of initial GWAS</em></h3>
-<p><em>Problem 9</em> Export the <em>.assoc</em> file and produce a Manhattan plot in RStudio. Make sure to use the appropriate Bonferroni-correction (think about how you identified this region as well) for the Manhattan plot.</p>
+<p><em>Problem 7</em> Export the <em>gwas_array.assoc</em> file and produce a Manhattan plot in RStudio. Make sure to use the appropriate Bonferroni-correction (think about how you identified this region as well) for the Manhattan plot.</p>
 </div>
 <div id="imputation-and-file-conversion" class="section level3">
 <h3><em>2.3: Imputation and File Conversion</em></h3>
 <p>Imputation for this set of 33 markers was completed in Section 1.5. The file you produced should be called <strong>“example.chr22.one.phased.impute2”</strong>. Let’s take this GENS file and convert it to PED format.</p>
-<p><em>Problem 10</em> Using the commands provided in section 1.6.2 above as a guide, write a second command to convert the file <em>data/Example/example.chr22.one.phased.impute2</em> to PED format and name this output <em>real_small_imputed</em> and place the output in the <em>data/plink_files/</em> directory.</p>
+<p><em>Problem 8</em> Using the commands provided in section 1.6.2 above as a guide, write a second command to convert the file <em>data/Example/example.chr22.one.phased.impute2</em> to PED format and name this output <em>real_small_imputed</em> and place the output in the <em>data/plink_files/</em> directory.</p>
 <p>Finally, we need to modify this PED file to insert our phenotype into it.</p>
-<p><em>Problem 11</em> Using the steps of section 2.1.1, create a phenotype file for the <em>real_small_imputed</em> dataset. Note that you will have to use the awk command, but make sure that the output file is named properly (the name should be <em>real_small_imputed.pheno</em>)</p>
+<p><em>Problem 9</em> Using the steps of section 2.1.1, create a phenotype file for the <em>real_small_imputed</em> dataset. Note that you will have to use the awk command, but make sure that the output file is named properly (the name should be <em>real_small_imputed.pheno</em>)</p>
 </div>
 <div id="running-a-gwas-with-imputed-snps" class="section level3">
 <h3><em>2.4: Running a GWAS with Imputed SNPs</em></h3>
 <p>Once you have your converted and reformatted PED and MAP files named <em>“real_small_imputed”</em>, we can now run a basic GWAS with these imputed SNPs GWAS.</p>
-<p><em>Problem 12</em> Run a basic association on the <em>real_small_imputed</em> files (using the steps from 2.1.2). Save the output to <em>results/gwas_imputed.assoc</em>.</p>
-<p><em>Problem 13</em> Use your BASH knowledge to find the most highly associated SNP in the <em>“real_test.assoc”</em> file. What SNP is it? What is the non-adjusted p-value?</p>
+<p><em>Problem 10</em> Run a basic association on the <em>real_small_imputed</em> files (using the steps from 2.1.2). Save the output to <em>results/gwas_imputed.assoc</em>.</p>
+<p><em>Problem 11</em> Use your BASH knowledge to find the most highly associated SNP in the <em>“gwas_imputed.assoc”</em> file. What SNP is it? What is the non-adjusted p-value?</p>
 </div>
 <div id="manhattan-plot-of-imputed-gwas" class="section level3">
 <h3><em>2.5: Manhattan Plot of Imputed GWAS</em></h3>
-<p>Lastly, we will visualize the results of our GWAS with imputed SNPs by exporting our <em>“real_test.assoc”</em> file to our computer and plot it using RStudio.</p>
-<p><em>Problem 14</em> Similar to Problem 9, produce a Manhattan plot for the <em>results/gwas_imputed.assoc</em> in RStudio. Describe the differences between this plot and the plot from Problem 9 in a couple of sentences.</p>
+<p>Lastly, we will visualize the results of our GWAS with imputed SNPs by exporting our <em>“gwas_imputed.assoc”</em> file to our computer and plot it using RStudio.</p>
+<p><em>Problem 12</em> Similar to Problem 11, produce a Manhattan plot for the <em>results/gwas_imputed.assoc</em> in RStudio. Describe the differences between this plot and the plot from Problem 9 in a couple of sentences.</p>
 <p><em>Optional Exercise</em> Examine how the associations change if you carry out the association analysis using the dosage data (–dosage option of plink) and/or using the posterior probabilites of each imputed genotype (using for example the SNPTEST software).</p>
 </div>
 </div>
